@@ -1,0 +1,14 @@
+\frametitle{Analizzatore di condizioni}
+
+\begin{lstlisting}[language=Python]
+import spacy
+from spacy.matcher import Matcher
+
+nlp = spacy.load("it_core_news_sm")
+matcher = Matcher(nlp.vocab)
+pattern = [{"POS": "NOUN"}, {"POS": "ADJ"}]
+matcher.add("NOUN_ADJ_PATTERN", [pattern])
+
+doc = nlp("Il mercato azionario ha mostrato una crescita costante.")
+matches = matcher(doc)
+\end{lstlisting}
